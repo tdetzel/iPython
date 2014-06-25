@@ -4,6 +4,13 @@ Spyder Editor
 
 This is a temporary script file.
 """
+
+#%%
+
+print "Hello World!"
+
+#%%
+
 y = 4*7
 
 #%%
@@ -62,11 +69,5 @@ for i in range(5):
 
 print myArray
           
-#%%
-
-#%%
-
-print "Hello World!"
-
 #%%
 
