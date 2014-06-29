@@ -1,0 +1,124 @@
+
+# coding: utf-8
+
+# In[2]:
+
+from IPython.display import HTML
+import folium
+
+
+# In[3]:
+
+def inline_map(map):
+    """
+    Embeds the HTML source of the map directly into the IPython notebook.
+    
+    This method will not work if the map depends on any files (json data). Also this uses
+    the HTML5 srcdoc attribute, which may not be supported in all browsers.
+    """
+    map._build_map()
+    return HTML('<iframe srcdoc="{srcdoc}" style="width: 100%; height: 510px; border: none"></iframe>'.format(srcdoc=map.HTML.replace('"', '&quot;')))
+
+def embed_map(map, path="map.html"):
+    """
+    Embeds a linked iframe to the map into the IPython notebook.
+    
+    Note: this method will not capture the source of the map into the notebook.
+    This method should work for all maps (as long as they use relative urls).
+    """
+    map.create_map(path=path)
+    return HTML('<iframe src="files/{path}" style="width: 100%; height: 510px; border: none"></iframe>'.format(path=path))
+
+
+# In[9]:
+
+map = folium.Map(location=[40, -99], zoom_start=4)
+map.circle_marker([40.737130, -74.026267], radius=500, popup='Hoboken, Sweet Hoboken.', line_color='3186cc', fill_color='31866cc', fill_opacity=0.2)
+inline_map(map)
+
+
+# In[11]:
+
+import pandas as pd
+
+
+# In[65]:
+
+df = pd.read_csv('/Users/tjd/Documents/Cuny/geodata/cuny.csv')
+
+
+# In[66]:
+
+df.head()
+
+
+# In[90]:
+
+cuny_map = folium.Map(location=[40.737130, -74.026267], zoom_start=12, 
+                        tiles='Stamen Terrain')
+cuny_map.lat_lng_popover()
+for row in df.iterrows():
+    wtg_id = str(row[1]['fakename'])
+    lat = row[1]['lat']
+    lng = row[1]['lon']
+    cuny_map.polygon_marker(location=[lat, lng], fill_color='#f4bf75', 
+                              radius=12, num_sides=6, popup='Name: ' + wtg_id)
+cuny_map.create_map('cuny_map.html')
+cuny_map.render_iframe = True
+cuny_map
+
+
+# In[91]:
+
+map = cuny_map
+inline_map(map)
+
+
+# In[92]:
+
+cuny_map2 = folium.Map(location=[40.737130, -74.026267], zoom_start=12, 
+                        tiles='Stamen Toner')
+cuny_map2.lat_lng_popover()
+for row in df.iterrows():
+    wtg_id = str(row[1]['fakename'])
+    lat = row[1]['lat']
+    lng = row[1]['lon']
+    cuny_map2.polygon_marker(location=[lat, lng], fill_color='#f4bf75', 
+                              radius=12, num_sides=6, popup='Name: ' + wtg_id)
+cuny_map2.create_map('cuny_map.html')
+cuny_map2.render_iframe = True
+cuny_map2
+
+
+# In[93]:
+
+map = cuny_map2
+inline_map(map)
+
+
+# In[94]:
+
+cuny_map3 = folium.Map(location=[40.737130, -74.026267], zoom_start=12, 
+                        tiles='OpenStreetMap')
+cuny_map3.lat_lng_popover()
+for row in df.iterrows():
+    wtg_id = str(row[1]['fakename'])
+    lat = row[1]['lat']
+    lng = row[1]['lon']
+    cuny_map3.polygon_marker(location=[lat, lng], fill_color='#f4bf75', 
+                              radius=12, num_sides=6, popup='Name: ' + wtg_id)
+cuny_map3.create_map('cuny_map.html')
+cuny_map3.render_iframe = True
+cuny_map3
+
+
+# In[95]:
+
+map = cuny_map3
+inline_map(map)
+
+
+# In[ ]:
+
+
+
