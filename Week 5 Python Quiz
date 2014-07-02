@@ -1,0 +1,35 @@
+# -*- coding: utf-8 -*-
+"""
+Spyder Editor
+
+This is a temporary script file.
+"""
+
+Q. 1
+
+Dictionaries are faster and more efficient to search. They are a set of immuntable and unordered key-value pairs. There are no restrictions on value. The keys serve as an index. Dictionaries can be created by putting key-value pairs inside brackets {}. In a list, for loops search over the values instead of an index (though you can make one), a process that's slower than looping through keys in a dictionary.
+
+Q. 2 Objects that are immutable can't be changed after they are created. Object that are mutable can be changed. In Python, numbers, strings and tuples are immutable. Lists are mutable. Keys in the key-value pairs that comprise dictionaries are immutable. 
+
+Q. 3 Import sets
+
+#%%
+import sets
+#%%
+
+#%%
+''' empty sets '''
+
+nonmembers = set()
+buildings = set()
+
+''' nonempty set '''
+
+streets = set(['Broaway', 'Fifth Avenue', 'Park Place', 'Hudson', 'Avenue of the Americas'])
+
+#%%
+
+
+Q. 4 
+
+A set of 14 unique letters (including space) contained in the title 'masters degree in data analytics'. 
