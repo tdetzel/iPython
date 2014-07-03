@@ -1,0 +1,205 @@
+{
+ "metadata": {
+  "name": "",
+  "signature": "sha256:a213c62af8742a7c9bda7d981ab142f836704d0df624be8b2176b78e6d1d2772"
+ },
+ "nbformat": 3,
+ "nbformat_minor": 0,
+ "worksheets": [
+  {
+   "cells": [
+    {
+     "cell_type": "code",
+     "collapsed": false,
+     "input": [
+      "import pandas as pd\n"
+     ],
+     "language": "python",
+     "metadata": {},
+     "outputs": [],
+     "prompt_number": 2
+    },
+    {
+     "cell_type": "code",
+     "collapsed": false,
+     "input": [
+      "movies = pd.read_table(\"/Users/tjd/Documents/Cuny/iPython/u.item\", sep='|', header=None, parse_dates=True, usecols=[0,1,2,4], names=['Row','Movie', 'Year', 'Url'])"
+     ],
+     "language": "python",
+     "metadata": {},
+     "outputs": [],
+     "prompt_number": 3
+    },
+    {
+     "cell_type": "code",
+     "collapsed": false,
+     "input": [
+      "movies.head()\n"
+     ],
+     "language": "python",
+     "metadata": {},
+     "outputs": [
+      {
+       "html": [
+        "<div style=\"max-height:1000px;max-width:1500px;overflow:auto;\">\n",
+        "<table border=\"1\" class=\"dataframe\">\n",
+        "  <thead>\n",
+        "    <tr style=\"text-align: right;\">\n",
+        "      <th></th>\n",
+        "      <th>Row</th>\n",
+        "      <th>Movie</th>\n",
+        "      <th>Year</th>\n",
+        "      <th>Url</th>\n",
+        "    </tr>\n",
+        "  </thead>\n",
+        "  <tbody>\n",
+        "    <tr>\n",
+        "      <th>0</th>\n",
+        "      <td> 1</td>\n",
+        "      <td>  Toy Story (1995)</td>\n",
+        "      <td> 01-Jan-1995</td>\n",
+        "      <td> http://us.imdb.com/M/title-exact?Toy%20Story%2...</td>\n",
+        "    </tr>\n",
+        "    <tr>\n",
+        "      <th>1</th>\n",
+        "      <td> 2</td>\n",
+        "      <td>  GoldenEye (1995)</td>\n",
+        "      <td> 01-Jan-1995</td>\n",
+        "      <td> http://us.imdb.com/M/title-exact?GoldenEye%20(...</td>\n",
+        "    </tr>\n",
+        "    <tr>\n",
+        "      <th>2</th>\n",
+        "      <td> 3</td>\n",
+        "      <td> Four Rooms (1995)</td>\n",
+        "      <td> 01-Jan-1995</td>\n",
+        "      <td> http://us.imdb.com/M/title-exact?Four%20Rooms%...</td>\n",
+        "    </tr>\n",
+        "    <tr>\n",
+        "      <th>3</th>\n",
+        "      <td> 4</td>\n",
+        "      <td> Get Shorty (1995)</td>\n",
+        "      <td> 01-Jan-1995</td>\n",
+        "      <td> http://us.imdb.com/M/title-exact?Get%20Shorty%...</td>\n",
+        "    </tr>\n",
+        "    <tr>\n",
+        "      <th>4</th>\n",
+        "      <td> 5</td>\n",
+        "      <td>    Copycat (1995)</td>\n",
+        "      <td> 01-Jan-1995</td>\n",
+        "      <td> http://us.imdb.com/M/title-exact?Copycat%20(1995)</td>\n",
+        "    </tr>\n",
+        "  </tbody>\n",
+        "</table>\n",
+        "<p>5 rows \u00d7 4 columns</p>\n",
+        "</div>"
+       ],
+       "metadata": {},
+       "output_type": "pyout",
+       "prompt_number": 4,
+       "text": [
+        "   Row              Movie         Year  \\\n",
+        "0    1   Toy Story (1995)  01-Jan-1995   \n",
+        "1    2   GoldenEye (1995)  01-Jan-1995   \n",
+        "2    3  Four Rooms (1995)  01-Jan-1995   \n",
+        "3    4  Get Shorty (1995)  01-Jan-1995   \n",
+        "4    5     Copycat (1995)  01-Jan-1995   \n",
+        "\n",
+        "                                                 Url  \n",
+        "0  http://us.imdb.com/M/title-exact?Toy%20Story%2...  \n",
+        "1  http://us.imdb.com/M/title-exact?GoldenEye%20(...  \n",
+        "2  http://us.imdb.com/M/title-exact?Four%20Rooms%...  \n",
+        "3  http://us.imdb.com/M/title-exact?Get%20Shorty%...  \n",
+        "4  http://us.imdb.com/M/title-exact?Copycat%20(1995)  \n",
+        "\n",
+        "[5 rows x 4 columns]"
+       ]
+      }
+     ],
+     "prompt_number": 4
+    },
+    {
+     "cell_type": "code",
+     "collapsed": false,
+     "input": [
+      "titles = movies[movies['Movie'].str.contains(\"1959\")]"
+     ],
+     "language": "python",
+     "metadata": {},
+     "outputs": [],
+     "prompt_number": 6
+    },
+    {
+     "cell_type": "code",
+     "collapsed": false,
+     "input": [
+      "titles[['Movie']]"
+     ],
+     "language": "python",
+     "metadata": {},
+     "outputs": [
+      {
+       "html": [
+        "<div style=\"max-height:1000px;max-width:1500px;overflow:auto;\">\n",
+        "<table border=\"1\" class=\"dataframe\">\n",
+        "  <thead>\n",
+        "    <tr style=\"text-align: right;\">\n",
+        "      <th></th>\n",
+        "      <th>Movie</th>\n",
+        "    </tr>\n",
+        "  </thead>\n",
+        "  <tbody>\n",
+        "    <tr>\n",
+        "      <th>479 </th>\n",
+        "      <td>              North by Northwest (1959)</td>\n",
+        "    </tr>\n",
+        "    <tr>\n",
+        "      <th>481 </th>\n",
+        "      <td>                Some Like It Hot (1959)</td>\n",
+        "    </tr>\n",
+        "    <tr>\n",
+        "      <th>525 </th>\n",
+        "      <td>                         Ben-Hur (1959)</td>\n",
+        "    </tr>\n",
+        "    <tr>\n",
+        "      <th>842 </th>\n",
+        "      <td>                 Shaggy Dog, The (1959)</td>\n",
+        "    </tr>\n",
+        "    <tr>\n",
+        "      <th>1511</th>\n",
+        "      <td> World of Apu, The (Apur Sansar) (1959)</td>\n",
+        "    </tr>\n",
+        "  </tbody>\n",
+        "</table>\n",
+        "<p>5 rows \u00d7 1 columns</p>\n",
+        "</div>"
+       ],
+       "metadata": {},
+       "output_type": "pyout",
+       "prompt_number": 14,
+       "text": [
+        "                                       Movie\n",
+        "479                North by Northwest (1959)\n",
+        "481                  Some Like It Hot (1959)\n",
+        "525                           Ben-Hur (1959)\n",
+        "842                   Shaggy Dog, The (1959)\n",
+        "1511  World of Apu, The (Apur Sansar) (1959)\n",
+        "\n",
+        "[5 rows x 1 columns]"
+       ]
+      }
+     ],
+     "prompt_number": 14
+    },
+    {
+     "cell_type": "code",
+     "collapsed": false,
+     "input": [],
+     "language": "python",
+     "metadata": {},
+     "outputs": []
+    }
+   ],
+   "metadata": {}
+  }
+ ]
+}
